@@ -6,7 +6,7 @@ const Navbar = () => {
         <div className="w-full h-16 bg-white fixed top-0 right-0 left-0 shadow-md z-50" >
             <div className="flex items-center justify-between px-6 py-3">
                 <div className="flex gap-4">
-                    <img src="/assets/colorfilter.png" alt="" className="w-8 h-8" />
+                    <img src="/src/assets/colorfilter.png" alt="" className="w-8 h-8" />
                     <div className="font-bold text-lg text-gray-900">
                         APrjectO
                     </div>
