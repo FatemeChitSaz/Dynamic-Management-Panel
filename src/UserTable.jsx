@@ -1,7 +1,9 @@
+import UserActions from "./UserAction";
+
 const tableHeaders = ["#", "اطلاعات کاربر", "نام کاربری", "نویسنده", "وضعیت حساب", "وضعیت احراز هویت", "وضعیت ایمیل", "تاریخ ثبت‌نام", "عملیات"];
 
 
-const UserTable = ({ users }) => {
+const UserTable = ({ users, onEdit, onDelete }) => {
 
     return (
         <div className="overflow-x-auto">
@@ -42,7 +44,7 @@ const UserTable = ({ users }) => {
 
                                     <td className="py-4 px-3">
                                         <span className="text-xs px-3 py-1 rounded-full bg-green-50 text-green-600">
-                                            Yes
+                                            {user.author || "YES"}
                                         </span>
                                     </td>
 
@@ -69,7 +71,7 @@ const UserTable = ({ users }) => {
                                     </td>
 
                                     <td className="py-4 px-3 text-sm text-gray-400">
-                                        ...
+                                        <UserActions userId={user.id} onEdit={onEdit} onDelete={onDelete}/>
                                     </td>
                                 </tr>
                             ))
