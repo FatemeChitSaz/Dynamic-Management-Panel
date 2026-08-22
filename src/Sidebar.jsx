@@ -19,9 +19,7 @@ const Sidebar = () => {
                 isOpen ? "w-64" : "w-20"
             }`}
         >
-            {/* تغییر ۱: یه wrapper جدید دور دکمه اضافه شد با px-3 (هم‌تراز با آیتم‌های منو) و py-4 */}
             <div className="flex items-center px-3 py-4">
-                {/* تغییر ۲: به خود دکمه padding (p-2) و افکت هاور اضافه شد */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="p-2 rounded-lg hover:bg-gray-100"
@@ -35,7 +33,6 @@ const Sidebar = () => {
                     key={item.name}
                     to={item.path}
                     className={({ isActive }) =>
-                        // تغییر ۳: py-6 به py-3 کم شد (فاصله‌ی عمودی آیتم‌ها کمتر و متناسب‌تر شد)
                         `flex items-center gap-3 px-3 py-3 ${
                             isActive ? "bg-blue-50 text-blue-600" : "text-gray-700"
                         }`

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Users from "./Users";
+import Posts from "./Posts";
 
 function App() {
     return (
@@ -13,7 +14,8 @@ function App() {
                 <main className="pt-16 mr-64 p-6 transition-all duration-300">
                     <Routes>
                         <Route path="/users" element={<Users />} />
-                        {/* بعداً: /posts, /tasks, /comments */}
+                        <Route path="/posts" element={<Posts />} />
+                        
                     </Routes>
                 </main>
             </div>
