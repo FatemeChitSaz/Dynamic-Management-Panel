@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Users from "./Users";
 import Posts from "./Posts";
+import Tasks from "./Tasks";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Routes>
                         <Route path="/users" element={<Users />} />
                         <Route path="/posts" element={<Posts />} />
+                        <Route path="/tasks" element={<Tasks />} />
                         
                     </Routes>
                 </main>
