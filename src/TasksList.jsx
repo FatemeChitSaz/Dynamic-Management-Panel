@@ -37,7 +37,8 @@ const TaskList = ({ tasks, users, onPriorityToggle, onUserClick }) => {
                                     {task.priority === "high" ? "زیاد" : "کم"}
                                 </button>
 
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold"
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-blue-300 hover:scale-105 transiition-all"
+                                    title="مشاهده اطلاعات کاربر"
                                     onClick={() => onUserClick(taskUser.id)}>
                                     {taskUser ? taskUser.name.charAt(0) : "?"}
                                 </div>
