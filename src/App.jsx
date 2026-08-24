@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Users from "./Users";
@@ -17,6 +17,7 @@ function App() {
                         <Route path="/users" element={<Users />} />
                         <Route path="/posts" element={<Posts />} />
                         <Route path="/tasks" element={<Tasks />} />
+                        <Route path="/" element={<Navigate to="/users"/>}/>
                         
                     </Routes>
                 </main>
