@@ -1,4 +1,4 @@
-const TaskList = ({ tasks, users, onPriorityToggle }) => {
+const TaskList = ({ tasks, users, onPriorityToggle, onUserClick }) => {
     return (
         <div className="flex flex-col gap-4">
             {tasks.length === 0 ? (
@@ -37,7 +37,8 @@ const TaskList = ({ tasks, users, onPriorityToggle }) => {
                                     {task.priority === "high" ? "زیاد" : "کم"}
                                 </button>
 
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold"
+                                    onClick={() => onUserClick(taskUser.id)}>
                                     {taskUser ? taskUser.name.charAt(0) : "?"}
                                 </div>
                             </div>
