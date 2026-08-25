@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import Users from "./Users";
 import Posts from "./Posts";
 import Tasks from "./Tasks";
+import Comments from "./Comments";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/users" element={<Users />} />
                         <Route path="/posts" element={<Posts />} />
                         <Route path="/tasks" element={<Tasks />} />
+                        <Route path="/comments" element={<Comments />} />
                         <Route path="/" element={<Navigate to="/users"/>}/>
                         
                     </Routes>
