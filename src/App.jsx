@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import Users from "./Users";
-import Posts from "./Posts";
-import Tasks from "./Tasks";
-import Comments from "./Comments";
+import Navbar from "./component/layout/Navbar";
+import Sidebar from "./component/layout/Sidebar";
+import Users from "./Users/Users";
+import Posts from "./Posts/Posts";
+import Tasks from "./tasks/Tasks";
+import Comments from "./comments/Comments";
 
 function App() {
     return (

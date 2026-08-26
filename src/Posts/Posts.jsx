@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useGetData } from "./getData";
-import { getPosts, getUsers } from "./API.js";
-import PostList from "./PostList";
-import PostDetailModall from "./PostDetailsModall";
+import { useGetData } from "../hooks/getData.js";
+import { getPosts, getUsers } from "../API/API.js";
+import PostList from "./PostList.jsx";
+import PostDetailModall from "./PostDetailsModall.jsx";
 
 const Posts = () => {
     const { data: postsData, loading: postsLoading, error: postsError } = useGetData(getPosts);

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useGetData } from "./getData";
-import { getUsers, deleteUser, updateUser } from "./API.js";
-import UserSearchFilter from "./UserSearchFilter";
-import UserTable from "./UserTable";
-import EditUserModal from "./EditUserModal";
+import { useGetData } from "../hooks/getData.js";
+import { getUsers, deleteUser, updateUser } from "../API/API.js";
+import UserSearchFilter from "./UserSearchFilter.jsx";
+import UserTable from "./UserTable.jsx";
+import EditUserModal from "./EditUserModal.jsx";
 
 const Users = () => {
     const { data, loading, error } = useGetData(getUsers);

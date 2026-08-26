@@ -1,5 +1,5 @@
-import { useGetData } from "./getData";
-import { getUser } from "./API.js";
+import { useGetData } from "../../hooks/getData.js";
+import { getUser } from "../../API/API.js";
 
 const getNavbarUser = () => getUser(1);
 
