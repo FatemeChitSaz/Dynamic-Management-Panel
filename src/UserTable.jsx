@@ -71,7 +71,7 @@ const UserTable = ({ users, onEdit, onDelete }) => {
                                     </td>
 
                                     <td className="py-4 px-3 text-sm text-gray-400">
-                                        <UserActions userId={user.id} onEdit={onEdit} onDelete={onDelete}/>
+                                        <UserActions userId={user.id} onEdit={onEdit} onDelete={onDelete} />
                                     </td>
                                 </tr>
                             ))

@@ -1,60 +1,42 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGetData } from "./getData";
-import CommentList from "./CommentList";
-import CommentDetailsModal from "./commentsDetailsModal";
+import { getPosts, getUsers } from "./API.js";
+import PostList from "./PostList";
+import PostDetailModall from "./PostDetailsModall";
 
+const Posts = () => {
+    const { data: postsData, loading: postsLoading, error: postsError } = useGetData(getPosts);
+    const { data: usersData, loading: usersLoading, error: usersError } = useGetData(getUsers);
+    const [selectedPost, setSelectedPost] = useState(null);
 
-const Comments = () => {
-    const { data: commentsData, loading: commentsLoading, error: commentsError } = useGetData("https://jsonplaceholder.typicode.com/comments");
-    const { data: postsData, loading: postsLoading, error: postsError } = useGetData("https://jsonplaceholder.typicode.com/posts");
-    const [comments, setComments] = useState([]);
-    const [selectedComments, setSelectedComments] = useState(null);
-
-    useEffect(() => {
-        if (commentsData) {
-            setComments(commentsData);
-        }
-    }, [commentsData]);
-
-    const handleCommentClick = (commentId) => {
-        const clikedComment = comments.find((comment) => comment.id === commentId);
-        setSelectedComments(clikedComment);
-    }
-
-    const handleDelete = (commentId) => {
-        setComments((prevComments) => prevComments.filter((comment) => comment.id !== commentId));
-    }
-
-
+    const handlePostClick = (postId) => {
+        const clickedPost = postsData.find((post) => post.id === postId);
+        setSelectedPost(clickedPost);
+    };
 
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            {(commentsLoading || postsLoading) && (
+            {(postsLoading || usersLoading) && (
                 <p className="text-center text-gray-400 py-8">در حال بارگذاری...</p>
             )}
 
-            {(commentsError || postsError) && (
+            {(postsError || usersError) && (
                 <p className="text-center text-red-500 py-8">خطا در دریافت اطلاعات</p>
             )}
 
-            {!commentsLoading && !postsLoading && !commentsError && !postsError && (
-                <CommentList
-                    comments={comments}
-                    posts={postsData}
-                    onCommentClick={handleCommentClick}
-                    onDelete={handleDelete}
-                />
+            {!postsLoading && !usersLoading && !postsError && !usersError && (
+                <PostList posts={postsData} onPostClick={handlePostClick} />
             )}
 
-            {selectedComments && (
-                <CommentDetailsModal
-                    comment={selectedComments}
-                    post={postsData?.find((post) => post.id === selectedComments.postId)}
-                    onClose={() => setSelectedComments(null)}
+            {selectedPost && (
+                <PostDetailModall
+                    post={selectedPost}
+                    author={usersData?.find((user) => user.id === selectedPost.userId)}
+                    onClose={() => setSelectedPost(null)}
                 />
             )}
         </div>
     );
-}
+};
 
-export default Comments;
+export default Posts;

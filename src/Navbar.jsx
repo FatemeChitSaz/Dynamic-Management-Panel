@@ -1,7 +1,10 @@
 import { useGetData } from "./getData";
+import { getUser } from "./API.js";
+
+const getNavbarUser = () => getUser(1);
 
 const Navbar = () => {
-    const { data, loading, error } = useGetData("https://jsonplaceholder.typicode.com/users/1")
+    const { data, loading, error } = useGetData(getNavbarUser)
     return (
         <div className="w-full h-16 bg-white fixed top-0 right-0 left-0 shadow-md z-50" >
             <div className="flex items-center justify-between px-6 py-3">

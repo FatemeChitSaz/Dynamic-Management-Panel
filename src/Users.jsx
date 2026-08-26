@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useGetData } from "./getData";
+import { getUsers, deleteUser, updateUser } from "./API.js";
 import UserSearchFilter from "./UserSearchFilter";
 import UserTable from "./UserTable";
 import EditUserModal from "./EditUserModal";
 
 const Users = () => {
-    const { data, loading, error } = useGetData("https://jsonplaceholder.typicode.com/users");
+    const { data, loading, error } = useGetData(getUsers);
     const [searchTerm, setSearchTerm] = useState("")
-    const [users, setUsers] = useState([]);;
+    const [users, setUsers] = useState([]);
     const [editingUser, setEditingUser] = useState(null);
 
     useEffect(() => {
@@ -23,9 +24,13 @@ const Users = () => {
         );
     });
 
-
-    const handleDelete = (userId) => {
-        setUsers((prevData) => prevData.filter((user) => user.id !== userId));
+    const handleDelete = async (userId) => {
+        try {
+            await deleteUser(userId);
+            setUsers((prevData) => prevData.filter((user) => user.id !== userId));
+        } catch (err) {
+            console.error("خطا در حذف کاربر:", err.message);
+        }
     }
 
     const handleEdit = (userId) => {
@@ -33,13 +38,19 @@ const Users = () => {
         setEditingUser(userToEdit);
     }
 
-    const handleSaveEdit = (updatedUser) => {
-        setUsers((prevUsers) =>
-            prevUsers.map((user) =>
-                user.id === updatedUser.id ? updatedUser : user
-            )
-        );
-        setEditingUser(null);
+    const handleSaveEdit = async (updatedUser) => {
+        try {
+            await updateUser(updatedUser.id, updatedUser);
+            setUsers((prevUsers) =>
+                prevUsers.map((user) =>
+                    user.id === updatedUser.id ? updatedUser : user
+                )
+            );
+        } catch (err) {
+            console.error("خطا در ویرایش کاربر:", err.message);
+        } finally {
+            setEditingUser(null);
+        }
     };
 
     return (

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useGetData } from "./getData";
+import { getTodos, getUsers } from "./API.js";
 import TaskList from "./TasksList";
 import UserDetailModal from "./UserDetailModal";
 
 const Tasks = () => {
-    const { data: todosData, loading: todosLoading, error: todosError } = useGetData("https://jsonplaceholder.typicode.com/todos");
-    const { data: usersData, loading: usersLoading, error: usersError } = useGetData("https://jsonplaceholder.typicode.com/users");
+    const { data: todosData, loading: todosLoading, error: todosError } = useGetData(getTodos);
+    const { data: usersData, loading: usersLoading, error: usersError } = useGetData(getUsers);
     const [tasks, setTasks] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
 
