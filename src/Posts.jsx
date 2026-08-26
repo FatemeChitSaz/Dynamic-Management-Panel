@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useGetData } from "./getData";
+import { getPosts, getUsers } from "./API.js";
 import PostList from "./PostList";
 import PostDetailModall from "./PostDetailsModall";
 
 const Posts = () => {
-    const { data: postsData, loading: postsLoading, error: postsError } = useGetData("https://jsonplaceholder.typicode.com/posts");
-    const { data: usersData, loading: usersLoading, error: usersError } = useGetData("https://jsonplaceholder.typicode.com/users");
+    const { data: postsData, loading: postsLoading, error: postsError } = useGetData(getPosts);
+    const { data: usersData, loading: usersLoading, error: usersError } = useGetData(getUsers);
     const [selectedPost, setSelectedPost] = useState(null);
 
     const handlePostClick = (postId) => {
