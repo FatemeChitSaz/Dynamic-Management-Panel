@@ -47,19 +47,19 @@ const Users = () => {
         );
     });
 
-    // const handleDelete = async (userId) => {
-    //     try {
-    //         await deleteUser(userId);
-    //         setUsers((prevData) => prevData.filter((user) => user.id !== userId));
-    //     } catch (err) {
-    //         console.error("خطا در حذف کاربر:", err.message);
-    //     }
-    // }
+    const handleDelete = async (userId) => {
+        try {
+            await deleteUser(userId);
+            dispatch({type: "DELETE", id: userId})
+        } catch (err) {
+            console.error("خطا در حذف کاربر:", err.message);
+        }
+    }
 
-    // const handleEdit = (userId) => {
-    //     const userToEdit = users.find((user) => user.id === userId);
-    //     setEditingUser(userToEdit);
-    // }
+    const handleEdit = (userId) => {
+        const userToEdit = users.find((user) => user.id === userId);
+        setEditingUser(userToEdit);
+    }
 
     // const handleSaveEdit = async (updatedUser) => {
     //     try {
